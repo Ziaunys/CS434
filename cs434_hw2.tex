@@ -101,14 +101,14 @@ The difference between the testing and training error would suggest that there w
 \begin{enumerate} 
 	\item We have two identical bags. Bag A contains 4 red marbles and 6 black marbles. Bag B contains 6 red marbles and 6 black marbles. Now we randomly chose a bag and drew a marble from the chosen bag and it turns out to be black. What is the probability that the chosen bag is bag A? \\
 	To solve this problem we can use the Bayes rule. \\
-	$ P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A) + P(B|\~A)P(\~A)}$ \\
+	$ P(B|A) = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|\~B)P(\~B)}$ \\
 	Bag: $\in {A,B}$ \\
 	Marble: $\in {red,black}$ \\
 	We can define event: \\
-	$A =$ Obtained black marble \\
-	$B =$ Obtained bag A \\
-	$P(B) = .5$, $P(A) = .6$ \\
-	$P(A|B) = \frac{.3*.5}{.3*.5 + .5*.5*.5} = 55.45\%$ \\
+	$B =$ Obtained black marble \\
+	$A =$ Obtained bag A \\
+	$P(A) = .5$, $P(B) = .6$ \\
+	$P(B|A) = \frac{.3*.5}{.3*.5 + .5*.5*.5} = 55.45\%$ \\
 	\item Suppose we have class variable y and three attributes $x_{1}, x_{2}, x_{3}$ and we wish to calculate $P(y = 1 | x_{1} = u_{1}, x_{2} = u_{2}, x_{3} = u_{3})$, and we have no conditional independence information. \\
 	\begin{enumerate}
 		\item Which of the following sets of probabilities are sufficient for calculation? \\
