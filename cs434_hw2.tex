@@ -78,15 +78,17 @@ Finally, please answer the following questions:
 \begin{figure}[h!]
   \centering
       \includegraphics[width=4in]{BPerfect.eps}
-  \caption{Depth 2 Learned Decision Tree}
+  \caption{Ideal tree based on class defintiion}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
       \includegraphics[width=7in]{D2.eps}
-  \caption{Depth 2 Learned Decision Tree}
+  \caption{Depth 2 Learned Decision Tree including Decision Stump as root}
 \end{figure}
 \end{enumerate}
+\subsection{Decision Stump}
+The decision stump we attained is the first step of our depth 2 tree.  It splits on the rule of $x5$ because it is the quickest to satisfy as it involves only one test.  The other rule of $x1 = x2$ would require 2 steps to describe after which time the rule on $x5$ would be not as clearly defined.  Thus it makes sense that the 1st rule was based on the value of $x5$.
 
 \subsection{Class Label Graph}
 The ideal graph would be to classify based on each of the clauses of the rule.  The best possible algorithm that our algorithm could have learned would be to split upon the value of $x5$ which gives you one leaf node and then split the remaining children on $x1$ and $x2$ in either order.  When our algorithm was used to create a depth 3 tree we found that the algorithm chose $x2$ for one of the siblings after the first level of the tree.  All of this node's children choose 1 as the classifying feature to split on.  This tree would then cover all of the rules to contain all of the true cases in leaf nodes 
@@ -95,7 +97,7 @@ The ideal graph would be to classify based on each of the clauses of the rule.  
 Generally the greedy induction algorithm will not create optimal decision trees.  While it can make locally optimal decisions for each node it does not neccesarily make decisions which are globally optimal.  Many of the branches in the decision tree are not relevant to the classifying rule.  When looking at a depth 2 tree created by the algorithm we see that it does make some correct decisions however it chooses several other values to partition upon which were not useful for finding the rule.  
 
 \subsection{Testing and Training Error}
-The difference between the testing and training error would suggest that there were signs of overtraining as the the error rate seemed to increase with after the first 
+The difference between the testing and training error would suggest that there were signs of overtraining as the the error rate seemed to increase with after the first for each new level in the tree with the root test being the most effective.  This is not surpr
  
 \section[2.]{Individual Assignment} 
 \begin{enumerate} 
