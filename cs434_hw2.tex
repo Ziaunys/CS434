@@ -41,7 +41,7 @@ As mentioned, please learn 1. a decision stump; and 2. a depth-2 decision tree f
 Finally, please answer the following questions: 
 \begin{enumerate} 
 	\item Given the formula for generating the class label, please provide (as compact as possible) decision tree that will correctly classify all training examples. 
-	\item Do you expect the top-down greedy induction algorithm to learn this optimal tree? 
+	\item Do you expect the top-down greedy induction algorithm to learn this optimal tree?
 
 
 \begin{table*}[htbp]
@@ -89,9 +89,13 @@ Finally, please answer the following questions:
 \end{enumerate}
 
 \subsection{Class Label Graph}
-The ideal graph would be to classify based on each of the clauses of the rule.  The best possible algorithm that our algorithm could learn would be to split upon the value of $x5$ which gives you one leaf node and then split the remaining children on $x1$ and $x2$ in either order.  When our algorithm was used to create a depth 3 tree we found that the algorithm chose $x2$ for one of the siblings after the first level of the tree.  All of this node's children choose 1 as the classifying feature to split upon which would have created the optimal tree as a subtree of our unpruned depth 3 decision tree.  
+The ideal graph would be to classify based on each of the clauses of the rule.  The best possible algorithm that our algorithm could have learned would be to split upon the value of $x5$ which gives you one leaf node and then split the remaining children on $x1$ and $x2$ in either order.  When our algorithm was used to create a depth 3 tree we found that the algorithm chose $x2$ for one of the siblings after the first level of the tree.  All of this node's children choose 1 as the classifying feature to split on.  This tree would then cover all of the rules to contain all of the true cases in leaf nodes 
+ 
 \subsection{Ideal Trees and the Top-down Greedy Induction Algorithm}
-Generally the greedy induction algorithm will not create optimal decision trees.  While it can make locally optimal decisions for each node it does not neccesarily make decisions which are globally optimal.
+Generally the greedy induction algorithm will not create optimal decision trees.  While it can make locally optimal decisions for each node it does not neccesarily make decisions which are globally optimal.  Many of the branches in the decision tree are not relevant to the classifying rule.  When looking at a depth 2 tree created by the algorithm we see that it does make some correct decisions however it chooses several other values to partition upon which were not useful for finding the rule.  
+
+\subsection{Testing and Training Error}
+The difference between the testing and training error would suggest that there were signs of overtraining as the the error rate seemed to increase with after the first 
  
 \section[2.]{Individual Assignment} 
 \begin{enumerate} 
@@ -105,7 +109,7 @@ Generally the greedy induction algorithm will not create optimal decision trees.
 	$B =$ Obtained bag A \\
 	$P(B) = .5$, $P(A) = .6$ \\
 	$P(A|B) = \frac{.3*.5}{.3*.5 + .5*.5*.5} = 55.45\%$ \\
-	\item Suppose we have class variable y and three attributes $x_{1},x_{2},x_{3}$ and we wish to calculate $P(y = 1 | x_{1} = u_{1}, x_{2} = u_{2}, x_{3} = u_{3})$, and we have no conditional independence information. \\
+	\item Suppose we have class variable y and three attributes $x_{1}, x_{2}, x_{3}$ and we wish to calculate $P(y = 1 | x_{1} = u_{1}, x_{2} = u_{2}, x_{3} = u_{3})$, and we have no conditional independence information. \\
 	\begin{enumerate}
 		\item Which of the following sets of probabilities are sufficient for calculation? \\
 		\begin{enumerate} 
