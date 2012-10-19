@@ -182,9 +182,9 @@ Generally the greedy induction algorithm will not create optimal decision trees.
 	\item Show that logistic regression learns a linear decision boundary. \\
 	Since $P(y = 1 | x) = \frac{1}{1 + e^{-w*x}} > P(y = 0 | x) = \frac{e^{-w*x}}{1 + e^{-w*x}}$ \\
 	We know that: \\
-	$log(\frac{P(y = 1 | x)}{P(y = 0 | x)} = w_{0} + w_{1}x_{1}) + \ldots + w_{m}x_{m}$ \\
+	$log(\frac{P(y = 1 | x)}{P(y = 0 | x)}) = w_{0} + w_{1}x_{1} + \ldots + w_{m}x_{m}$ \\
 	If we substitute in our equations for P we get: \\
-	$log(\frac{1 + e^{-w*x}}{e^{-w*x}(1 + e^{-w*x}})) = log(e^{w*x}) = w*x$ \\
+	$log(\frac{1 + e^{-w*x}}{e^{-w*x}(1 + e^{-w*x})}) = log(e^{w*x}) = w*x$ \\
 	Therefore, since the rate of change is constant and it's continuous, we can say that this equation for the decision boudary is linear. \\
 \end{enumerate}
 \end{document} 
