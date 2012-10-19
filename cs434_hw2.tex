@@ -76,9 +76,9 @@ Finally, please answer the following questions:
 	\end{tabular} \\[15mm]
 	\begin{enumerate} 
 		\item Based on the training data, calculate the prior distribution for Y:P(Y), with and without Laplace smoothing. \\
-		$P(y = j) = \frac{1}{n} \sum_{i=1}{n} I(y_{i} = j)$ \\
+		$P(y = j) = \frac{1}{n} \sum_{i=1}^{n} I(y_{i} = j)$ \\
 		There are 6 examples and a binary class. So, we can say: \\
-		$\frac{1}{6} \sum_{i=1}{6} I(y_{i} = 1)$ \\
+		$\frac{1}{6} \sum_{i=1}^{6} I(y_{i} = 1)$ \\
 		$\frac{3}{6} = .5$ \\
 		With Laplace smoothing we obtain: \\
 		$\frac{3+1}{6+2*1}i = .5$ at $ k = 1$ \\ 
