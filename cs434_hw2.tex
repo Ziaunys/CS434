@@ -112,14 +112,23 @@ Finally, please answer the following questions:
 	The task is to build a decision tree for classifying Y. \\
 	\begin{enumerate} 
 		\item Compute the information gain of attributes X, V, and W respectively. \\
+
 		\item Use information gain for selecting test and produce the full decision tree. \\
+
 		\item Considering the following two strategies for avoid over-fitting. \\
+
 		\begin{enumerate} 
 			\item The first strategy stops growing the tree when the information gain of the best test is less than a given threshold $\epsilon$. \\
-			\item The second strategy grows the full tree first and then prunes the tree bottom up: start from the lowest level of the tree and prune a sub-tree if the information gain of the test is less than a given threshold $\epsilon$. (Note that you should stop checking level $t$ if none of sub-trees at level $t+1$ satisfies the pruning criterion. \\
+			\item The second strategy grows the full tree first and then prunes the tree bottom up: start from the lowest level of the tree and prune a sub-tree if the information gain of the test is less than a given threshold $\epsilon$. (Note that you should stop checking level $t$ if none of sub-trees at level $t+1$ satisfies the pruning criterion.i) \\
 		\end{enumerate} 	
 		\item Discuss the advantages and disadvantages of the two strategies. \\
 	\end{enumerate} 
 	\item Show that logistic regression learns a linear decision boundary. \\
+	Since $P(y = 1 | x) = \frac{1}{1 + e^{-w*x}} > P(y = 0 | x) = \frac{e^{-w*x}}{1 + e^{-w*x}}$ \\
+	We know that: \\
+	$log(\frac{P(y = 1 | x)}{P(y = 0 | x)} = w_{0} + w_{1}x_{1}) + \ldots + w_{m}x_{m}$ \\
+	If we substitute in our equations for P we get: \\
+	$log(\frac{1 + e^{-w*x}}{e^{-w*x}(1 + e^{-w*x}})) = log(e^{w*x}) = w*x$ \\
+	Therefore, since the rate of change is constant and it's continuous, we can say that this equation for the decision boudary is linear. \\
 \end{enumerate}
 \end{document} 
