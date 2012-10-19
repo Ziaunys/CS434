@@ -114,7 +114,7 @@ Generally the greedy induction algorithm will not create optimal decision trees.
 			\item $P(y = 1); P(y = 1| x_{1} = u_{1}); p(y = 1 | x_{2} = u_{2}); P(y = 1 | x_{3} = u_{3})$ \\
 		\end{enumerate} 
 		The 2nd example is sufficient because the probability of each feature must be taken in to account since we have no information about independence.\\
-		\item Now suppose we know that the variables $x_{1},x_{2},x_{3}$ are conditionally independent given the class variable Y. Which of the above 3 sets are sufficient now? 
+		\item Now suppose we know that the variables $x_{1},x_{2},x_{3}$ are conditionally independent given the class variable Y. Which of the above 3 sets are sufficient now? \\
 		The 1st one is sufficient since we can calculate the P of each feature independently given the prior.\\
 	\end{enumerate} 
 	\item (Naive Bayes Classifier) We will use the following training set to build a Naive Bayes classifier. A, B, and C are three binary attributes and Y is the target class label. \\[10mm]
@@ -167,7 +167,7 @@ Generally the greedy induction algorithm will not create optimal decision trees.
 	The task is to build a decision tree for classifying Y. \\
 	\begin{enumerate} 
 		\item Compute the information gain of attributes X, V, and W respectively. \\
-
+		$-\frac{2}{4}log_{2}\frac{2}{4} -  
 		\item Use information gain for selecting test and produce the full decision tree. \\
 
 		\item Considering the following two strategies for avoid over-fitting. \\
@@ -175,6 +175,7 @@ Generally the greedy induction algorithm will not create optimal decision trees.
 		\begin{enumerate} 
 			\item The first strategy stops growing the tree when the information gain of the best test is less than a given threshold $\epsilon$. \\
 			\item The second strategy grows the full tree first and then prunes the tree bottom up: start from the lowest level of the tree and prune a sub-tree if the information gain of the test is less than a given threshold $\epsilon$. (Note that you should stop checking level $t$ if none of sub-trees at level $t+1$ satisfies the pruning criterion.i) \\
+		Let $\epsilon$ be $0.001$ for both cases, write down the resulting tree for each strategy and compare their training errors. \\
 		\end{enumerate} 	
 		\item Discuss the advantages and disadvantages of the two strategies. \\
 	\end{enumerate} 
