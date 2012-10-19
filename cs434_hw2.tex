@@ -210,14 +210,16 @@ The difference between the testing and training error would suggest that there w
 			\item The first strategy stops growing the tree when the information gain of the best test is less than a given threshold $\epsilon$. \\
 			\\
 			\\
-			When we grow the tree beyond the first decision stump we see that splitting on W or V both yield no information gain as they both equally partition the data.  At that step we would no longer grow the tree as we do not gain additional information gain at that step.  Continuing to grow would fully classify the data but given the limited size of the data set and apparent randomness it would most likely be overfit.
+			When we grow the tree beyond the first decision stump we see that splitting on W or V both yield no information gain as they both equally partition the data.  At that step we would no longer grow the tree as we do not gain additional information gain at that step.  Continuing to grow would fully classify the data but given the limited size of the data set and apparent randomness it would most likely be overfit.  The training error for the depth 1 decision tree is uninteresting as it will correctly classify 1 of the 5 examples correctly and splits the remaining 4 evently without making a prediction as to which outcome is more likely.  
 			\item The second strategy grows the full tree first and then prunes the tree bottom up: start from the lowest level of the tree and prune a sub-tree if the information gain of the test is less than a given threshold $\epsilon$. (Note that you should stop checking level $t$ if none of sub-trees at level $t+1$ satisfies the pruning criterion.i) \\
 		Let $\epsilon$ be $0.001$ for both cases, write down the resulting tree for each strategy and compare their training errors. \\
 		\\
 		\\
-		When we start at looking at the leafs of the full tree we see that they both have the same information gain however when we go up the tree to those node's parent we see that there is no information gain.  
+		When we start looking at the leafs of the full tree we see that they both have the same information gain however when we go up the tree to those node's parent we see that there is no information gain.  The problem with pruning with such a limited data set is that how you choose to seperate the validation sets will impact the performance of your pruning.  If we prune the the node above the two right hand side leafs we would create the same tree as our other method.  If we choose to not prune this branch and leave it as a full tree it has no training error yet is very likely to not be practical for testing further data as there is not enough data to draw any conclusions about the decision tree.
 		\end{enumerate} 	
 		\item Discuss the advantages and disadvantages of the two strategies. \\
+		With this limited dataset there are significant drawbacks to pruning.  With such a small dataset how you partition your data into testing and validation sets can have a significant impact on the performance of your pruning.  There also do not seem to be significant trends in this data aside from the decision stump meaning that both pruning and limiting the tree size result in inefficient decision trees with high error rates.  The full tree rooted at X with the second level split on W or V has no error rate given the training data because all the leafs of the tree completely classify data and prior to that point no branch aside from the decision stump makes a prediction.  
+ 
 	\end{enumerate} 
 	\item Show that logistic regression learns a linear decision boundary. \\
 	Since $P(y = 1 | x) = \frac{1}{1 + e^{-w*x}} > P(y = 0 | x) = \frac{e^{-w*x}}{1 + e^{-w*x}}$ \\
