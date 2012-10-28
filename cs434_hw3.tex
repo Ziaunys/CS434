@@ -24,197 +24,25 @@ CS434: Assignment 3
 \section[2]{Solo Assignment} 
 \begin{enumerate} 
 	\item[1.] Define functional margin and geometric margin. Explain why functional margin is not a good objective to optimize in order to learn a maximum margin classifier. \\
-	\item[2.] For the soft-margin SVM, parameter c controls the trade-off between maximizing the margin and minimizing the slack variables (aka the 'error' of the fat decision boundary). Consider the following data set, what linear decision boundary will soft-margin SVM learn when $c = 0.01$ \\
-\end{enumerate} 
-Finally, please answer the following questions: 
-\begin{enumerate} 
-	\item Given the formula for generating the class label, please provide (as compact as possible) decision tree that will correctly classify all training examples. 
-	\item Do you expect the top-down greedy induction algorithm to learn this optimal tree?
+	Generally the functional margin $\hat{\gamma}_{i} = y_{i}(w\cdot x_{i} + b)$ isn't very useful because the function can be satisfied after rescaling, therefore, it can yield irrelvent results. 
 
-
-\begin{table*}[htbp]
- \centering
-\begin{minipage}[b]{5in}
- \centering
-    \begin{tabular}[H]{ | l | l |}
-    \hline
-    Tree Depth & Error Rate \\ \hline
-    1          & 0.250 \\ 
-    2          & 0.301 \\
-    3          & 0.317 \\
-    \hline
-    \end{tabular}
-    \caption{Error Rate on Testing Data}
-    \label{labelname 1}
-\end{minipage}
-
-\begin{minipage}[b]{5in}
- \centering
-    \begin{tabular}[H]{ | l | l |}
-    \hline
-    Tree Depth & Error Rate \\ \hline
-    1          & 0.266 \\ 
-    2          & 0.287 \\
-    3          & 0.255 \\
-    \hline
-    \end{tabular}
-    \caption{Error Rate on Training Data}
-    \label{labelname 2}
-\end{minipage}
-\end{table}
-
-\begin{figure}[h!]
-  \centering
-      \includegraphics[width=4in]{BPerfect.eps}
-  \caption{Ideal tree based on class defintiion}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-      \includegraphics[width=7in]{D2.eps}
-  \caption{Depth 2 Learned Decision Tree including Decision Stump as root}
-\end{figure}
-\end{enumerate}
-\subsection{Decision Stump}
-The decision stump we attained is the first step of our depth 2 tree.  It splits on the rule of $x5$ because it is the quickest to satisfy as it involves only one test.  The other rule of $x1 = x2$ would require 2 steps to describe after which time the rule on $x5$ would be not as clearly defined.  Thus it makes sense that the 1st rule was based on the value of $x5$.
-
-\subsection{Class Label Graph}
-The ideal graph would be to classify based on each of the clauses of the rule.  The best possible algorithm that our algorithm could have learned would be to split upon the value of $x5$ which gives you one leaf node and then split the remaining children on $x1$ and $x2$ in either order.  When our algorithm was used to create a depth 3 tree we found that the algorithm chose $x2$ for one of the siblings after the first level of the tree.  All of this node's children choose 1 as the classifying feature to split on.  This tree would then cover all of the rules to contain all of the true cases in leaf nodes 
- 
-\subsection{Ideal Trees and the Top-down Greedy Induction Algorithm}
-Generally the greedy induction algorithm will not create optimal decision trees.  While it can make locally optimal decisions for each node it does not neccesarily make decisions which are globally optimal.  Many of the branches in the decision tree are not relevant to the classifying rule.  When looking at a depth 2 tree created by the algorithm we see that it does make some correct decisions however it chooses several other values to partition upon which were not useful for finding the rule.  
-
-\subsection{Testing and Training Error}
-The difference between the testing and training error would suggest that there were signs of overtraining as the the error rate seemed to increase with after the first for each new level in the tree with the root test being the most effective.  This is not surpr
- 
-\section[2.]{Individual Assignment} 
-\begin{enumerate} 
-	\item We have two identical bags. Bag A contains 4 red marbles and 6 black marbles. Bag B contains 6 red marbles and 6 black marbles. Now we randomly chose a bag and drew a marble from the chosen bag and it turns out to be black. What is the probability that the chosen bag is bag A? \\
-	To solve this problem we can use the Bayes rule. \\
-	$ P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A) + P(B|\~A)P(\~A)}$ \\
-	Bag: $\in {A,B}$ \\
-	Marble: $\in {red,black}$ \\
-	We can define event: \\
-	$B =$ Obtained black marble \\
-	$A =$ Obtained bag A \\
-	$P(A) = .5$, $P(B) = .6$ \\
-	$P(A|B) = \frac{.3*.5}{.3*.5 + .5*.5*.5} = 55.45\%$ \\
-	\item Suppose we have class variable y and three attributes $x_{1}, x_{2}, x_{3}$ and we wish to calculate $P(y = 1 | x_{1} = u_{1}, x_{2} = u_{2}, x_{3} = u_{3})$, and we have no conditional independence information. \\
-	\begin{enumerate}
-		\item Which of the following sets of probabilities are sufficient for calculation? \\
-		\begin{enumerate} 
-			\item $P(y = 1); P(x_{1} = u_{1} | y = 1); P( x_{2} = u_{2} | y = 1); P(x_{3} = u_{3} | y = 1)$ \\
-			\item $P(x_{1} = u_{1}, x_{2} = u_{2}, x_{3} = u_{3}); P(y = 1); P(x_{1} = u_{1}, x_{2} = u_{2}, x_{3} = u_{3} | y = 1)$ \\
-			\item $P(y = 1); P(y = 1| x_{1} = u_{1}); p(y = 1 | x_{2} = u_{2}); P(y = 1 | x_{3} = u_{3})$ \\
-		\end{enumerate} 
-		The 2nd example is sufficient because the probability of each feature must be taken in to account since we have no information about independence.\\
-		\item Now suppose we know that the variables $x_{1},x_{2},x_{3}$ are conditionally independent given the class variable Y. Which of the above 3 sets are sufficient now? \\
-		The 1st one is sufficient since we can calculate the P of each feature independently given the prior.\\
-	\end{enumerate} 
-	\item (Naive Bayes Classifier) We will use the following training set to build a Naive Bayes classifier. A, B, and C are three binary attributes and Y is the target class label. \\[10mm]
-	\centering
-	\begin{tabular}{| l | l | l | l |} 
-	\hline
-	A & B & C & Y \\ \hline 
-	0 & 1 & 1 & 0 \\ \hline
-	1 & 1 & 1 & 0 \\ \hline
-	0 & 0 & 0 & 0 \\ \hline
-	1 & 1 & 0 & 1 \\ \hline
-	0 & 1 & 0 & 1 \\ \hline
-	1 & 0 & 1 & 1 \\ \hline 
-	\end{tabular} \\[15mm]
-	\begin{enumerate} 
-		\item Based on the training data, calculate the prior distribution for Y:P(Y), with and without Laplace smoothing. \\
-		$P(y = j) = \frac{1}{n} \sum_{i=1}^{n} I(y_{i} = j)$ \\
-		There are 6 examples and a binary class. So, we can say: \\
-		$\frac{1}{6} \sum_{i=1}^{6} I(y_{i} = 1)$ \\
-		$\frac{3}{6} = .5$ \\
-		With Laplace smoothing we obtain: \\
-		$\frac{3+1}{6+2*1} = .5$ at $ k = 1$ \\ 
-		We are essentially adding two additional samples with each classifier to increase our resolution. \\ 
-		\item Based on the training data, calculate the distributions $P(A|Y), P(B|Y)$ and $P(C|Y)$, with and without Laplace smoothing. \\
-		Without Laplace smoothing we obtain: \\
-		$P(A|Y) = \frac{2}{6} = .33$, $P(B|Y) = \frac{2}{6} = .33$, $P(C|Y) = \frac{1}{6} = .16$ \\
-		With Laplace smoothing we obtain: \\
-		$P(A|Y) = \frac{2+1}{6+2*1} = .375$, $P(B|Y) = \frac{2+1}{6+2*1} = .375$, $P(C|Y) = \frac{1+1}{6+2*1} = .25$ \\
-		\item What prediction will the Naive Bayes classifier make for a new example $(A = 1, B = 0, C = 0)$, with and without Laplace smoothing? \\
-		In order to test this new example we must find: \\
-		$P(y = 1)*P(A = 1 | y = 1)*P(B = 0 | y = 1)*P(C = 0 | y = 1)$ \\
-		and \\
-		$P(y = 0)*P(A = 1 | y = 0)*P(B = 0 | y = 0)*P(C = 0 | y = 0)$ \\
-		 $\frac{3}{6} * \frac{1}{3} * \frac{1}{6} * \frac{1}{3} = .00925$ \\
-		 $\frac{3}{6} * \frac{1}{6} * \frac{1}{6} * \frac{1}{6} = .00231$ \\
-		Thus, the new example is $\in y = 1$ \\
-		With Laplace smoothing: \\
-		 $\frac{3+1}{6 + 2*1} * \frac{1+1}{3 + 2*1} * \frac{1 + 1}{6 + 2*1} * \frac{1 + 1}{3 + 2*1} = .00200$ \\
-		 $\frac{3+1}{6 + 2*1} * \frac{1+1}{6 + 2*1} * \frac{1 + 1}{6 + 2*1} * \frac{1 + 1}{6 + 2*1} = .00781$ \\
-	\end{enumerate}
-	\item Decision tree learning \\
-	Given the following data set: \\[15mm]
-	\begin{tabular}{c | c | c || c } 
-	V & W & X & Y \\ \hline
-	0 & 0 & 0 & 0 \\ \hline 
-	0 & 1 & 0 & 1 \\ \hline
-	1 & 0 & 0 & 1 \\ \hline 
-	1 & 1 & 0 & 0 \\ \hline 
-	1 & 1 & 1 & 0 \\ \hline 
-	\end{tabular} \\[15mm]
-	The task is to build a decision tree for classifying Y. \\
-	\begin{enumerate} 
-		\item Compute the information gain of attributes X, V, and W respectively. \\
-
-\begin{figure}[h!]
-  \centering
-      \includegraphics[width=4in]{T3.eps}
-  \caption{Trees rooted with X, V, and W}
-\end{figure}
-
-		For V: \\
-		$H(S) = -\frac{2}{5}log_{2}\frac{2}{5} - \frac{3}{5}log_{2}\frac{3}{5} = .97$ \\
-		$H(S_{1}) = -\frac{1}{3}log_{2}\frac{1}{3} - \frac{2}{3}log_{2}\frac{2}{3} = .91 $ \\
-		$H(S_{2}) = -\frac{1}{2}log_{2}\frac{1}{2} - \frac{1}{2}log_{2}\frac{1}{2} = 1.0 $ \\
-		$.97 - \frac{2}{5}*1.0 -\frac{3}{5}*.91 = .023$ \\
-		For W: \\ 
-		$H(S) = -\frac{2}{5}log_{2}\frac{2}{5} - \frac{2}{5}log_{2}\frac{2}{5} = .97$ \\
-		$H(S_{1}) = -\frac{1}{3}log_{2}\frac{1}{3} - \frac{2}{3}log_{2}\frac{2}{3} = .91$ \\
-		$H(S_{2}) = -\frac{1}{2}log_{2}\frac{1}{2} - \frac{1}{2}log_{2}\frac{1}{2} = 1.0$ \\
-		$.97 - \frac{2}{5}*1.0 -\frac{3}{5}*.91 = .023$ \\
-		For X: \\
-		$H(S) = -\frac{2}{5}log_{2}\frac{2}{5} - \frac{3}{5}log_{2}\frac{3}{5} = .97$ \\
-		$H(S_{1}) = -\frac{0}{2}log_{2}\frac{0}{2} - \frac{1}{1}log_{2}\frac{1}{1} = 0$ \\
-		$H(S_{2}) = -\frac{2}{4}log_{2}\frac{2}{4} - \frac{2}{4}log_{2}\frac{2}{4} = 1.0$ \\
-		$.97 - \frac{2}{5}*0 -\frac{3}{5}*.91 = .42$ \\
+	\item[2.] For the soft-margin SVM, parameter c controls the trade-off between maximizing the margin and minimizing the slack variables (aka the 'error' of the fat decision boundary). Consider the following data set, what linear decision boundary will soft-margin SVM learn when $c = 0.01$, and $c = 1000$? You don't need to give specific equations, just mark out what the fat decision boundary look like in the figure. \\
 	
-		\item Use information gain for selecting test and produce the full decision tree. \\
-		
-\begin{figure}[h!]
-  \centering
-      \includegraphics[width=6in]{FullT4.eps}
-  \caption{Full Trees rooted with X}
-\end{figure}
-		\item Considering the following two strategies for avoid over-fitting. \\
-
-		\begin{enumerate} 
-			\item The first strategy stops growing the tree when the information gain of the best test is less than a given threshold $\epsilon$. \\
-			\\
-			\\
-			When we grow the tree beyond the first decision stump we see that splitting on W or V both yield no information gain as they both equally partition the data.  At that step we would no longer grow the tree as we do not gain additional information gain at that step.  Continuing to grow would fully classify the data but given the limited size of the data set and apparent randomness it would most likely be overfit.  The training error for the depth 1 decision tree is uninteresting as it will correctly classify 1 of the 5 examples correctly and splits the remaining 4 evently without making a prediction as to which outcome is more likely.  
-			\item The second strategy grows the full tree first and then prunes the tree bottom up: start from the lowest level of the tree and prune a sub-tree if the information gain of the test is less than a given threshold $\epsilon$. (Note that you should stop checking level $t$ if none of sub-trees at level $t+1$ satisfies the pruning criterion.i) \\
-		Let $\epsilon$ be $0.001$ for both cases, write down the resulting tree for each strategy and compare their training errors. \\
-		\\
-		\\
-		When we start looking at the leafs of the full tree we see that they both have the same information gain however when we go up the tree to those node's parent we see that there is no information gain.  The problem with pruning with such a limited data set is that how you choose to seperate the validation sets will impact the performance of your pruning.  If we prune the the node above the two right hand side leafs we would create the same tree as our other method.  If we choose to not prune this branch and leave it as a full tree it has no training error yet is very likely to not be practical for testing further data as there is not enough data to draw any conclusions about the decision tree.
-		\end{enumerate} 	
-		\item Discuss the advantages and disadvantages of the two strategies. \\
-		With this limited dataset there are significant drawbacks to pruning.  With such a small dataset how you partition your data into testing and validation sets can have a significant impact on the performance of your pruning.  There also do not seem to be significant trends in this data aside from the decision stump meaning that both pruning and limiting the tree size result in inefficient decision trees with high error rates.  The full tree rooted at X with the second level split on W or V has no error rate given the training data because all the leafs of the tree completely classify data and prior to that point no branch aside from the decision stump makes a prediction.  
- 
+	\item[3.] Consider applying SVM to the following two class classification problem. Please : \\
+	
+	\begin{enumerate} 
+		\item Mark out the fat decision boundary learned by SVM (this includes three lines $w\cdot x+b=0, w\cdot x+b=0, w\cdot x+b=1, w\cdot x+b=-1$). You should be able to identify the decision boundary by eyeballing, without actually solving the optimization problem. \\
+		\item Circle the support vectors. \\
+		\item What are the $w$ and $b$ parameter of this learned decision boundary (Hint: based on the support vectors, you hsould be able to plug their $x$ values in the correstponding equations and solve for $w$ and $b$). \\
+	\end{enumerate}
+	\item Create by hand the clustering dendrogram for the following samples of ten points in one dimension. Sample = $(-1.8, -1.7, -0.3, 0.1, 0.2, 0.4, 1.6, 1.7, 1.9, 2.0)$ 
+	\begin{enumerate} 
+		\item Using a single link. \\
+		\item Using complete link. \\
 	\end{enumerate} 
-	\item Show that logistic regression learns a linear decision boundary. \\
-	Since $P(y = 1 | x) = \frac{1}{1 + e^{-w*x}} > P(y = 0 | x) = \frac{e^{-w*x}}{1 + e^{-w*x}}$ \\
-	We know that: \\
-	$log(\frac{P(y = 1 | x)}{P(y = 0 | x)}) = w_{0} + w_{1}x_{1} + \ldots + w_{m}x_{m}$ \\
-	If we substitute in our equations for P we get: \\
-	$log(\frac{1 + e^{-w*x}}{e^{-w*x}(1 + e^{-w*x})}) = log(e^{w*x}) = w*x$ \\
-	Therefore, since the rate of change is constant and it's continuous, we can say that this equation for the decision boudary is linear. \\
-\end{enumerate}
+	Note that below are examples of dendrograms for the following three points $(1,2,4)$ with single and complete link. \\
+
+
+
+\end{enumerate} 
 \end{document} 
