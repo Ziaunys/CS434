@@ -12,28 +12,39 @@ xs = map(lambda x: (1, x[1], x[2]), data)
 y_test = map(lambda x: x[0], data_test)
 xs_test = map(lambda x: (1, x[1], x[2]), data_test)
 
+"""
+p_train takes a list of x vectors and a list of their corresponding classification
+and returns a function representing the learned decision boundary
+"""
 def p_train(xs,ys,shuffled=False,epoch=0):
-	w = list(repeat(0, len(xs[0])))
+    # Create initial vector of zero weights
+    w = list(repeat(0, len(xs[0])))
+    # function used for taking dot product of vectors
 	dot_product = lambda x, w: sum(imap(mul, x, w))
 	updated = True
+    # pack the input vectors with their corresponding outputs
 	data = zip(xs,ys)
-	if shuffled:
-		random.shuffle(data)
-	if epoch:
+    # if we are doing partial epochs slice the list from zero to epoch
+    if epoch:
 		data = data[:epoch]
 	while updated:
+        # if we are shuffling our epochs do so
 		if shuffled:
 			random.shuffle(data)
 		updated = False
 		for x,y in data:
-			print y
+            # check if data is correctly classified
 			if dot_product(x, w) * y <= 0:
+                # if not adjust the weight vector
 				w = [y * xi + wi for xi, wi in izip(x, w)]
 				updated = True
-	return lambda x: -(w[0] + x * w[1]) / w[2]	
+    # return a function creates the learned decision boundary
+	return lambda x: -(w[0] + x * w[1]) / w[2]
+
+
+# Graph generation
 
 x = range(-4,9)
-
 font = {'family' : 'normal',
         'weight' : 'bold',
         'size'   : 14}
