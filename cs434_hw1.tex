@@ -46,6 +46,9 @@ CS434: Assignment 1
 \end{flushleft}
 \section[1]{Implementation Assignment} 
 \large Plots for problems 1, 2, and 3. \\ 
+
+The accuracy for unshuffled test data at epoch 20 to 100 by steps of 20: Unreliable because of the first data point. Decision boundary is heavily skewed. The accuracy for shuffled test data  at epoch 20 to 100 by steps of 20 is: 97/99, 97/99, 98/99, 0, 0. This shows that our algorithm is much more effective when the data points are randomly chosen. \\
+Accuracy for unshuffled training data at epoch 20 to 100 by steps of 20: 98/99, 91/99, 0, 0, 0. The perceptron seems to make a large amount of error at 40 epochs. Overfitting could contribute to misclassification at certain points between 20 and 60 epochs. For shuffled training data at epoch 20 to 100 by steps of 20: 92/98, 0, 0, 0, 0. There is a large amount of error at 20 epochs but we can see that it quickly converges. 
 \begin{figure}[th!]
 \centering
 \includegraphics[width=5in]{learn.eps} 
