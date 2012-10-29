@@ -24,7 +24,7 @@ CS434: Assignment 3
 \section[2]{Solo Assignment} 
 \begin{enumerate} 
 	\item[1.] Define functional margin and geometric margin. Explain why functional margin is not a good objective to optimize in order to learn a maximum margin classifier. \\
-	Generally the functional margin $\hat{\gamma}_{i} = y_{i}(w\cdot x_{i} + b)$ isn't very useful because the function can be satisfied after rescaling, therefore, it can yield irrelvent results. 
+	Generally the functional margin $\hat{\gamma}_{i} = y_{i}(w\cdot x_{i} + b)$ isn't very useful because the function can be satisfied after rescaling, therefore, it can yield irrelvent results. The geometric margin finds the point(s) $x_{i}$ which is closest to the decision boundary. 
 
 	\item[2.] For the soft-margin SVM, parameter c controls the trade-off between maximizing the margin and minimizing the slack variables (aka the 'error' of the fat decision boundary). Consider the following data set, what linear decision boundary will soft-margin SVM learn when $c = 0.01$, and $c = 1000$? You don't need to give specific equations, just mark out what the fat decision boundary look like in the figure. \\
 	\includegraphics[width=6in]{2.eps}
@@ -36,7 +36,7 @@ CS434: Assignment 3
 		\item Circle the support vectors. \\
 		\item What are the $w$ and $b$ parameter of this learned decision boundary (Hint: based on the support vectors, you hsould be able to plug their $x$ values in the correstponding equations and solve for $w$ and $b$). \\
 	\end{enumerate}
-	\item Create by hand the clustering dendrogram for the following samples of ten points in one dimension. Sample = $(-1.8, -1.7, -0.3, 0.1, 0.2, 0.4, 1.6, 1.7, 1.9, 2.0)$ 
+	\item[4.] Create by hand the clustering dendrogram for the following samples of ten points in one dimension. Sample = $(-1.8, -1.7, -0.3, 0.1, 0.2, 0.4, 1.6, 1.7, 1.9, 2.0)$ 
 	\begin{enumerate} 
 		\item Using a single link. \\
 		\item Using complete link. \\

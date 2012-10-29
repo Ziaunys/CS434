@@ -1,7 +1,7 @@
 from __future__ import division
 from operator import mul
 from itertools import imap, izip, repeat
-from numpy import matrix 
+from numpy import matrix
 import numpy as np
 
 f = open('tn-train.txt')
@@ -16,7 +16,10 @@ x2 = [166, 196, 191, 180.34, 174, 176.53, 177, 208.28, 199, 181, 178, 172, 208.2
 
 xs = [list(repeat(1,len(x1))) ,x1, x2]
 
-
+"""
+Given a list of input vectors and the corresponding output learn a linear regression
+and return a function which predicts y given 2 inputs
+"""
 def multi_regression(xs,y):
     xs = matrix(xs)
     xTy = np.dot(xs,y)
@@ -27,7 +30,9 @@ def multi_regression(xs,y):
     print type(w[0])
     return lambda x1,x2 : w[0] + x1*w[1] + x2*w[2]
 
-
+"""
+Given a list of x and y values return a function which predicts y for a given x
+"""
 def linear_regression(x, y):
     avg = lambda data: sum(data) / len(data)
     xy_bar = avg(map(mul, x, y))
@@ -37,6 +42,15 @@ def linear_regression(x, y):
     w = (xy_bar - x_bar*y_bar) / (x_sq_bar - x_bar**2)
     b = y_bar - w * x_bar
     return lambda x: w*x + b
+
+
+"""
+Tests and SSE
+
+In our document we misunderstood the SSE who our values are too low as we divided by the number of tests
+so the SSE is off by a factor of the len(y)
+"""
+
 
 f = multi_regression(xs,y)
 sse = 0
