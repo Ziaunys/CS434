@@ -37,10 +37,14 @@
 }
 
 \begin{document}
+\begin{flushright}
+\end{flushright}
+\begin{flushleft}
 \textbf Eric Zounes, Ian Fridge \\
 \today  \\
-CS434: Assignment 1\\[10mm]
-\section[1.]{Implementation Assignment} 
+CS434: Assignment 1 
+\end{flushleft}
+\section[1]{Implementation Assignment} 
 \large Plots for problems 1, 2, and 3. \\ 
 \begin{figure}[th!]
 \centering
@@ -76,20 +80,23 @@ CS434: Assignment 1\\[10mm]
 \end{figure} 
 \pagebreak
 \\[15mm]
-\section{
-\\[10mm]
-\large \textbf{1. Weather and Traffic Predictions: Supervised Learning} \\[5mm]
-Supervised learning algorithms are well suited for problems where there are consistent patterns influenced by one or more independent variables. The algorithms which can solve these problems are relatively easy to understand in that they predict a rate of change given a set of training data. Learning algorithms are most effective when operating on data which is linearly separable. So, it is important that there are definite correlations in our training data. A great application of supervised learning is predicting traffic density based on weather forecast. In order to design an effective solution for this problem we'll first start sampling our training data at uniform intervals. We must agree on quantifiable features which, we suspect, have an effect on our dependent variable. For example, our features could consist of temperature, wind speed, and cloud coverage. These are all valid features which have potential to affect traffic density. To measure the effect we'll also define a threshhold for the traffic density in order to create a classifier. Thus, we have average traffic density act as a linear classifier. A decision tree algorithm would work well for this type of problem due to the relationship between features. For example, there might be an obvious trend in temperature vs. cloud coverage. \\[15mm]
+\section[2]{Individual Assignment} 
+\begin{enumerate} 
+	\item Design your supervised learning problem. In this class, we will spend one class discussion a particular learning task and try to come up with a machine learning solution to the problem. I would like everyone in the class to contribute a candidate task for this case study. In particular, please provide one supervised learning tasks that you think is cool and interesting. Describe the task, explain why you think this is (or can be solved as) a supervised learning task (what is the target variable that you want to predict, and what are the input features you might use). Whoever proposes the task that is chosen for the case study will get 10 bonus points. \\
 
-\large 2. \\
-a. Using only knee height we find that b $=82.87$ and w1 $= 1.81$ SSE $= 25.879$. \\[5mm]
+ Supervised learning algorithms are well suited for problems where there are consistent patterns influenced by one or more independent variables. The algorithms which can solve these problems are relatively easy to understand in that they predict a rate of change given a set of training data. Learning algorithms are most effective when operating on data which is linearly separable. So, it is important that there are definite correlations in our training data. A great application of supervised learning is predicting traffic density based on weather forecast. In order to design an effective solution for this problem we'll first start sampling our training data at uniform intervals. We must agree on quantifiable features which, we suspect, have an effect on our dependent variable. For example, our features could consist of temperature, wind speed, and cloud coverage. These are all valid features which have potential to affect traffic density. To measure the effect we'll also define a threshhold for the traffic density in order to create a classifier. Thus, we have average traffic density act as a linear classifier. A decision tree algorithm would work well for this type of problem due to the relationship between features. For example, there might be an obvious trend in temperature vs. cloud coverage. \\[15mm]
+
+	\item Below is the set of training data that was used in class for linear regression. Please complete the following tasks using this data.
+
+	\begin{enumerate} 	
+		\item  Using only knee height we find that b $=82.87$ and w1 $= 1.81$ SSE $= 25.879$. \\
 
 \begin{figure}[th!]
 \centering
 \includegraphics[width=5in]{Kneeheight_training.eps} 
 \end{figure} 
 \\[10mm]
-b. Using both of the independent variables we find that the value of b $= 71.315$ and w1 $= .79$, w2 $= .323$ \\
+		\item Using both of the independent variables we find that the value of b $= 71.315$ and w1 $= .79$, w2 $= .323$ \\
 SSE for the arm span is $= 15.93$ \\
 \\[5mm]
 \begin{tabular}{ | c | c | c | c | c | p{10cm} | }
@@ -117,14 +124,17 @@ Knee Height & Arm Span & Projected & Actual & Error \\ \hline
 57.000      & 188.000  & 184.945   & 185.000 & 0.055 \\ \hline
 \end{tabular} 
 \\[10mm]
-c. The SSE was greater for knee height because of an outlier. Weight might reduce the amount of error gained from the knee height feature as it is less reliable than arm span. \\
-
-\large 3. \\
-a. Training error for:  1-nearest neighbor $= 0$ \\
-   Leave-one-out error for: 1-nearest neighbor $= 0$ \\
-b. Training error for:  3-nearest neighbor $= 3$ \\ 
-   Leave-one-out error for: 3-nearest neighbor $3/11$ \\
-c. Decision boundary for 1-nearest neighbor \\[5mm]
+		\item The SSE was greater for knee height because of an outlier. Weight might reduce the amount of error gained from the knee height feature as it is less reliable than arm span. \\
+	\end{enumerate} 
+	\item Below is a set of 2-d data points, with black dots representing positive class and red dots representing negative class. The blue line segments show the Voroni diagram of these points.  \\
+	\begin{enumerate}
+		\item  What are the training error and leave-one-out error of 1-nearest neightbor? \\
+			Training error for:  1-nearest neighbor $= 0$ \\
+	   	        Leave-one-out error for: 1-nearest neighbor $= 6$ \\
+		\item  What are the training error and leave-one-out error of 3-nearest neighbor? \\
+	  	        Training error for:  3-nearest neighbor $= 2$ \\ 
+	                Leave-one-out error for: 3-nearest neighbor $6$ \\
+		\item  Decision boundary for 1-nearest neighbor \\[5mm]
 
 \begin{figure}[th!]
 \centering
