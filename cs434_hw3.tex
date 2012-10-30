@@ -34,7 +34,17 @@ CS434: Assignment 3
 	\begin{enumerate} 
 		\item Mark out the fat decision boundary learned by SVM (this includes three lines $w\cdot x+b=0, w\cdot x+b=0, w\cdot x+b=1, w\cdot x+b=-1$). You should be able to identify the decision boundary by eyeballing, without actually solving the optimization problem. \\
 		\item Circle the support vectors. \\
-		\item What are the $w$ and $b$ parameter of this learned decision boundary (Hint: based on the support vectors, you hsould be able to plug their $x$ values in the correstponding equations and solve for $w$ and $b$). \\
+		\item What are the $w$ and $b$ parameter of this learned decision boundary (Hint: based on the support vectors, you hsould be able to plug their $x$ values in the correstponding equations and solve for $w$ and $b$). \\ \\
+        point on $wx + b = 1$ is (3,2) \\
+        point on $wx + b = 0$ is (5,1) \\
+        point on $wx + b = -2$ is (6,2) \\
+        $3*w_{1} + 2*w_{2} + b = -1$ \\
+        $5*w_{1} + 1*w_{2} + b = 0$  \\
+        $6*w_{1} + 2*w_{2} + b = 1$ \\
+        Solving this system of equation yields the result \\
+        $w_{1} = 2/3$ \\
+        $w_{2} = 1/3$ \\
+        $b = -11/3$ \\
 	\end{enumerate}
 	\item[4.] Create by hand the clustering dendrogram for the following samples of ten points in one dimension. Sample = $(-1.8, -1.7, -0.3, 0.1, 0.2, 0.4, 1.6, 1.7, 1.9, 2.0)$ 
 	\begin{enumerate} 
