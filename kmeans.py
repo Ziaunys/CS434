@@ -48,6 +48,12 @@ plt.ylabel("SSE")
 plt.plot(range(len(SSE)),SSE)
 plt.show()
 """
+plt.scatter([ i[0] for i in S[0]],[ i[1] for i in S[0]], c='b', marker='o')
+plt.scatter([ i[0] for i in S[1]],[ i[1] for i in S[1]], c='r', marker='o')
+plt.scatter([ i[0] for i in S[2]],[ i[1] for i in S[2]], c='g', marker='o')
+plt.title('Kmeans clustering from Algorithm')
+plt.show()
+"""
 SSE = []
 for i in range(2,7):
     min_SSE = []
@@ -61,5 +67,3 @@ plt.xlabel("k")
 plt.ylabel("SSE")
 plt.plot(range(2,7),SSE)
 plt.show()
-"""
-
