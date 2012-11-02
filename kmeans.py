@@ -17,7 +17,7 @@ def find_clusters(data, centers):
     assign = lambda centers, point: min([(dist(center, point), center, point) for center in centers])
     clusters = [assign(centers, point) for point in data]
     return [[point[-1] for point in clusters if point[1] == center] for center in centers]
-    
+
 def kmeans(data, k = 3):
     centers = []
     past_centers = []
@@ -50,7 +50,7 @@ SSE = []
 for i in range(2,7):
     min_SSE = []
     for z in range(10):
-        _, past_centers, final_centers = kmeans(data,k = 1)
+        _, past_centers, final_centers = kmeans(data,k = i)
         for past_center in past_centers:
             min_SSE.append(sum([(c1[0] - c2[0])**2 + (c1[1] - c2[1])**2 for c1, c2 in izip(past_center,final_centers)]))
     SSE.append(min(min_SSE))
