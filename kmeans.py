@@ -34,7 +34,7 @@ def kmeans(data, k = 3):
         new_centers = [find_centroid(cluster) for cluster in clusters]
     return clusters, past_centers, centers
 
-_, past_centers, final_centers = kmeans(data)
+S, past_centers, final_centers = kmeans(data)
 import matplotlib.pyplot as plt
 """
 SSE = []
@@ -44,6 +44,12 @@ plt.title("SSE for %s iterations of kmeans with k=3"%len(SSE))
 plt.xlabel("Iterations")
 plt.ylabel("SSE")
 plt.plot(range(len(SSE)),SSE)
+plt.show()
+"""
+plt.scatter([ i[0] for i in S[0]],[ i[1] for i in S[0]], c='b', marker='o') 
+plt.scatter([ i[0] for i in S[1]],[ i[1] for i in S[1]], c='r', marker='o') 
+plt.scatter([ i[0] for i in S[2]],[ i[1] for i in S[2]], c='g', marker='o') 
+plt.title('Kmeans clustering from Algorithm') 
 plt.show()
 """
 SSE = []
@@ -59,3 +65,4 @@ plt.xlabel("k")
 plt.ylabel("SSE")
 plt.plot(range(2,7),SSE)
 plt.show()
+"""
