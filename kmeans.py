@@ -36,6 +36,7 @@ def kmeans(data, k = 3):
 
 _, past_centers, final_centers = kmeans(data)
 import matplotlib.pyplot as plt
+"""
 SSE = []
 for past_center in past_centers:
     SSE.append(sum([(c1[0] - c2[0])**2 + (c1[1] - c2[1])**2 for c1, c2 in izip(past_center,final_centers)]))
@@ -44,5 +45,17 @@ plt.xlabel("Iterations")
 plt.ylabel("SSE")
 plt.plot(range(len(SSE)),SSE)
 plt.show()
-
-
+"""
+SSE = []
+for i in range(2,7):
+    min_SSE = []
+    for z in range(10):
+        _, past_centers, final_centers = kmeans(data,k = 1)
+        for past_center in past_centers:
+            min_SSE.append(sum([(c1[0] - c2[0])**2 + (c1[1] - c2[1])**2 for c1, c2 in izip(past_center,final_centers)]))
+    SSE.append(min(min_SSE))
+plt.title("Minimum SSE for means k = 2..6")
+plt.xlabel("k")
+plt.ylabel("SSE")
+plt.plot(range(2,7),SSE)
+plt.show()
