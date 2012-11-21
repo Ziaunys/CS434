@@ -52,22 +52,29 @@ CS434: Assignment 3
 		\item[b.] Report the projection vectors for PC1 and PC2. \\
 				\begin{verbatim} 	
 
-				  [x1, x2] = eig(V)
-						   
-
+				 [x1, x2] = eig(V)
+					  x1 =
+					     = -0.8849    0.4657
+						0.4657    0.8849
+					  x2 =
+					        0.5027         0
+					        0    	  2.4730
 				\end{verbatim} 
 		\item[c.] Please plot the data in two difference figures, one in the original 2-d coordinate system, and one in the PCA space(2-d). \\
-				
+	\end{enumerate} 
+
 
 	\end{enumerate}
 	\item[3.] Given a dataset, PCA seeks to find a small number of dimensions that preserve as much variance in data as possible. Now consider a supervised learning task, can you come up with a situation where applying PCA to the data can significantly worsen the classification performance? In other words, is it possible to have data that is original separable but made non-separable by PCA projection (to lower dimension)? Please provide a visual example \\
 	\item[4.] Boosting. Consider a data set $D = {x_{1},x_{2},\ldots,x_{10}}$. We apply Adaboost with Decision Stump. Let $w_{1}, \ldots, w_{10}$ be the weights of the ten training examples respectively. \\
 	\begin{enumerate}
 		\item[a.] In the first iteration $, x_{1}, x_{2},$and$ x_{3}$ are misclassified. Please rank the updated weights $w_{1}, \ldots, w_{10}$ be the weights of the ten training examples respectively. \\
+		$\epsilon_{t} = w_{1} + w_{2} + w_{3}$ \\
+		$\alpha_{t} = \frac{1}{2} ln (\frac{1 - \epsilon_{t}}{\epsilon_{t}})$ \\
+		Updated rank: \\ 
+		
+		
 		\item[b.] In the second iteration, $x_{3}$ and $X_{4}$ are misclassified. Please provide the rank of the updated weights $w_{1}, \ldots, w_{10}$ in increasing order. Explain your ordering. \\
 	\end{enumerate}
 \end{enumerate}
-
-
- 
 \end{document} 
