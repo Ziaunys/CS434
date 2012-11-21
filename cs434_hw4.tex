@@ -36,15 +36,25 @@ CS434: Assignment 4
 	\end{center} 
 	\begin{enumerate} 
 		\item[a.] Find all frequent itemsets with minimum support count $= 2$. Pease provide clear intermediate steps, indicating $C_{1},L_{1},C_{2},L_{2}, \ldots$ until the algorithm terminates. Be sure to include (and clearly indicate) the results of the self-join, and pruning step in generating candidate sets. \\
+    
+		\begin{tabular}{| l | c |}   
+		\hline
+		L1 & C1 \\ \hline
+	    \cellcolor{green}$A$ & 3  \\ \hline
+		\cellcolor{green}$B$ & 2  \\ \hline
+		\cellcolor{green}$C$ & 2 \\ \hline
+		\cellcolor{green}$D$ & 3 \\ \hline 
+		\cellcolor{red}$E$ & 1 \\ \hline 
+		\end{tabular} 	
 	
 		\begin{tabular}{| l | c |}   
 		\hline
-		Item & $\sigma$ \\ \hline
-	   \cellcolor{green}$A B$ & 2  \\ \hline
-		$A C$ & 1  \\ \hline
+		L2 & C2 \\ \hline
+	    \cellcolor{green}$A B$ & 2  \\ \hline
+		\cellcolor{red}$A C$ & 1  \\ \hline
 		\cellcolor{green}$A D$ & 2 \\ \hline
-		$B C$ & 1 \\ \hline 
-		$B D$ & 1 \\ \hline 
+		\cellcolor{red}$B C$ & 1 \\ \hline 
+		\cellcolor{red}$B D$ & 1 \\ \hline 
 		\cellcolor{green}$C D$ & 2 \\ \hline 
 		\end{tabular} 	
 		
@@ -52,12 +62,12 @@ CS434: Assignment 4
 		\begin{tabular}{| l | c |}   
 		\hline
 		Item & Conf. \\ \hline
-		$A \rightarrow B$ & $\frac{2}{3}$  \\ \hline
+		\cellcolor{red}$A \rightarrow B$ & $\frac{2}{3}$  \\ \hline
 		\cellcolor{green}$B \rightarrow A$ & 1  \\ \hline
-		$A \rightarrow D$ & $\frac{2}{3}$ \\ \hline
-		$D \rightarrow A$ & $\frac{2}{3}$ \\ \hline 
+		\cellcolor{red}$A \rightarrow D$ & $\frac{2}{3}$ \\ \hline
+		\cellcolor{red}$D \rightarrow A$ & $\frac{2}{3}$ \\ \hline 
 		\cellcolor{green}$C \rightarrow D$ & 1 \\ \hline 
-		$D \rightarrow C$ & $\frac{2}{3}$ \\ \hline 
+		\cellcolor{red}$D \rightarrow C$ & $\frac{2}{3}$ \\ \hline 
 		\end{tabular} 	
 				
 	\end{enumerate} 
@@ -74,11 +84,11 @@ CS434: Assignment 4
 		\item[b.] Report the projection vectors for PC1 and PC2. \\
 				\begin{verbatim} 	
 
-				 [x1, x2] = eig(V)
-					  x1 =
+				 [V, E] = eig(V)
+					  V =
 					     = -0.8849    0.4657
 						0.4657    0.8849
-					  x2 =
+					  E =
 					        0.5027         0
 					        0    	  2.4730
 				\end{verbatim} 
@@ -87,12 +97,12 @@ CS434: Assignment 4
 	\end{enumerate}
 	\begin{figure} 
 	\includegraphics[width=6in]{original_2d.eps} 
-	\caption{A plot of the data on the original 2d space.} 
+	\caption{2d Space} 
 	\end{figure}
-	When we find the PCA vectors, we can change the axis of the data plot. \\
+	We use Matlab's axis equals directive to alter the graphs axes and plot the eigen vectors.  \\
 	\begin{figure} 
 	\includegraphics[width=6in]{pca_space.eps} 
-	\caption{A plot of the data in PCA space.} 
+	\caption{PCA Space} 
 	\end{figure}
 	\end{enumerate}
 	\pagebreak
@@ -113,7 +123,9 @@ CS434: Assignment 4
 		$w_{4}, w_{5}, w_{6}, w_{7}, w_{8}, w_{9}, w_{10}, w_{1}, w_{2}, w_{3}$ \\
 			
 		\item[b.] In the second iteration, $x_{3}$ and $x_{4}$ are misclassified. Please provide the rank of the updated weights $w_{1}, \ldots, w_{10}$ in increasing order. Explain your ordering. \\
-		
+		\\
+        \\
+        The first iteration has 3 error weights being updated and the significance of this update is less than the second update.  Since $x_{3}$ is updated in both iterations it would have the most error.  Also since $x_{4}$ is updated in the second iteration in which there are fewer errors it's weight will be greater than the first update because the value of epsilon is greater. \\
 		$\epsilon_{t} = x_{4} + x_{3} $ \\
 		$\epsilon_{2} = \frac{1}{10} + .1527 $ \\
 		$\epsilon_{2} = .252$ 
